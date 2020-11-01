@@ -1,5 +1,6 @@
 <?php
 
+use App\PontoColeta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,5 +26,5 @@ Route::get('Pontos-Coleta/busca/{nome?}', 'PontoColetaController@search');
 
 //Retorna todos os pontos de coleta da cidade $id
 Route::get('cidade/{id}/PontosColeta', function ($id) {
-     return App\Cidade::find($id)->pontosColeta;
+     return App\Cidade::find($id)->with('pontosColeta')->get();
 });

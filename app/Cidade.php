@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\PontoColeta;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,6 +17,6 @@ class Cidade extends Model
     //Indica que podem ter varios pontos de coleta
     public function pontosColeta()
     {
-        return $this->hasMany('App\PontoColeta');
+        return $this->hasMany(PontoColeta::class);
     }
 }

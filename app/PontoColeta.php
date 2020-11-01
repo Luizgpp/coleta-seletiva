@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\Cidade;
 use Illuminate\Database\Eloquent\Model;
 
 class PontoColeta extends Model
@@ -19,7 +19,7 @@ class PontoColeta extends Model
     // Indicando que o um ponto de coleta pertence a uma cidade
     public function Cidade()
     {
-        return $this->belongsTo('App\Cidade');
+        return $this->belongsTo(Cidade::class);
     }
 
 }
