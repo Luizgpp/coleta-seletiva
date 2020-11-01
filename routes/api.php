@@ -13,7 +13,17 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+//Rotas HTTP para api (get, post, patch, delete) Pontos de Coleta
+Route::apiResource('Pontos-Coleta', 'PontoColetaController');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//Rotas HTTP para api (get, post, patch, delete) Cidades
+Route::apiResource('Cidades', 'CidadeController');
+
+//Rota para campos de busca por nome coletas
+Route::get('Pontos-Coleta/busca/{nome?}', 'PontoColetaController@search');
+
+
+//Retorna todos os pontos de coleta da cidade $id
+Route::get('cidade/{id}/PontosColeta', function ($id) {
+     return App\Cidade::find($id)->pontosColeta;
 });
