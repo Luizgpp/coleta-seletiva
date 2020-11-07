@@ -20,7 +20,7 @@ Route::apiResource('Pontos-Coleta', 'PontoColetaController');
 //Rotas HTTP para api (get, post, patch, delete) Cidades
 Route::apiResource('Cidades', 'CidadeController');
 
-//Rota para campos de busca por nome coletas
+//Rota para busca de coletar por nome
 Route::get('Pontos-Coleta/busca/{nome?}', 'PontoColetaController@search');
 
 

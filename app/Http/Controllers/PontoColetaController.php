@@ -55,7 +55,7 @@ class PontoColetaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nome' => 'required|unique:ponto_coletas|max:155',
+            'nome' => 'required|max:155',
             'endereco' => 'required|min:15'
         ]);
 
