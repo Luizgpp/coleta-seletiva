@@ -15,7 +15,7 @@ class PontoColetaController extends Controller
      */
     public function index()
     {
-        return PontoColeta::all();
+        return PontoColeta::with('cidade')->get();
 
     }
 
@@ -46,7 +46,7 @@ class PontoColetaController extends Controller
     }
 
     /**
-     * Altera um terminado ponto de coleta
+     * Altera um determinado ponto de coleta
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -84,7 +84,7 @@ class PontoColetaController extends Controller
      */
     public function search($nome)
     {
-        $resultado =  PontoColeta::where('nome','like', "%". $nome . "%")->get();
+        $resultado =  PontoColeta::where('nome','like', "%". $nome . "%")->with('cidade')->get();
 
         return  $resultado;
     }

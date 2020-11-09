@@ -19,7 +19,7 @@ class PontoColeta extends Model
     // Indicando que o um ponto de coleta pertence a uma cidade
     public function Cidade()
     {
-        return $this->belongsTo(Cidade::class);
+        return $this->belongsTo(Cidade::class, 'cidade_id');
     }
 
 }

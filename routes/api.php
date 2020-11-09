@@ -20,11 +20,17 @@ Route::apiResource('Pontos-Coleta', 'PontoColetaController');
 //Rotas HTTP para api (get, post, patch, delete) Cidades
 Route::apiResource('Cidades', 'CidadeController');
 
-//Rota para busca de coletar por nome
+//Rota para busca de coleta por nome
 Route::get('Pontos-Coleta/busca/{nome?}', 'PontoColetaController@search');
 
 
 //Retorna todos os pontos de coleta da cidade $id
 Route::get('cidade/{id}/PontosColeta', function ($id) {
-     return App\Cidade::find($id)->with('pontosColeta')->get();
+     return App\Cidade::find($id)->pontosColeta;
+});
+
+//Busca cidade do determinado ponto de coleta
+Route::get('Pontos-Coleta/{id}/cidade', function ($id) {
+    $pontoColeta = PontoColeta::find($id);
+    return $pontoColeta->cidade;
 });
