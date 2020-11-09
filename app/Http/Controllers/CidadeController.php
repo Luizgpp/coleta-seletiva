@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cidade;
+use Illuminate\Support\Facades\App;
 
 class CidadeController extends Controller
 {
@@ -26,11 +27,11 @@ class CidadeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nome' => 'required|unique:cidades',
+            'nome' => 'required',
             'uf' => 'required|size:2',
             'pais' => 'required'
         ]);
-        return Cidade::create($request->all());
+        return Cidade::firstOrCreate($request->toArray());
     }
 
     /**
